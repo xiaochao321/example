@@ -32,8 +32,13 @@ public class UserController {
 	private static Logger log=LoggerFactory.getLogger(UserController.class);
 	 @Resource  
 	 private IUserService userService;
-    
-    // /user/test?id=1
+
+	@RequestMapping(value="/index",method=RequestMethod.GET)
+	public String index(HttpServletRequest request,Model model){
+		return "test";
+	}
+
+		// /user/test?id=1
     @RequestMapping(value="/test",method=RequestMethod.GET)  
     public String test(HttpServletRequest request,Model model){  
         int userId = Integer.parseInt(request.getParameter("id"));  
@@ -46,10 +51,9 @@ public class UserController {
         	 user.setPassword("123");
         	 user.setUserName("javen");
 		}
-       
         log.debug(user.toString());
         model.addAttribute("user", user);  
-        return "index";  
+        return "index";
     }  
     
     
