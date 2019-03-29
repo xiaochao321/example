@@ -21,12 +21,20 @@
         <init-param>  
             <param-name>encoding</param-name>  
             <param-value>UTF-8</param-value>  
-        </init-param>  
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
     </filter>  
     <filter-mapping>  
         <filter-name>encodingFilter</filter-name>  
         <url-pattern>/*</url-pattern>  
-    </filter-mapping>  
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>*.html</url-pattern>
+    </filter-mapping>
     <!-- Spring监听器 -->  
     <listener>  
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>  
@@ -54,9 +62,10 @@
         <servlet-name>SpringMVC</servlet-name>  
         <!-- 此处可以可以配置成*.do，对应struts的后缀习惯 -->  
         <url-pattern>/</url-pattern>  
-    </servlet-mapping>  
-    <welcome-file-list>  
-        <welcome-file>/index.jsp</welcome-file>  
-    </welcome-file-list>  
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>jsp</servlet-name>
+        <url-pattern>*.html</url-pattern>
+    </servlet-mapping>
   
 </web-app>  
